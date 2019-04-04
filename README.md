@@ -1,13 +1,12 @@
 # Discount Products Next Order
 
-Wordpress plugin for integrated Priceza Sales Conversion Tracking with WooCommerce.
+Woocommerce plugin for auto generated coupons and send email to complete order for discount next order
 
 It so Easy!!
-
-You just insert merchantId it done.
 
 ## Change Log
 
 ### 1.0.0
-* 
+* auto generated coupons
+* send to order complete
 
