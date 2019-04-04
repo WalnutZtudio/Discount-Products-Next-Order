@@ -1,6 +1,13 @@
-# Discount-Next-order
+# Discount Products Next Order
 
-V 1.0.0
-Test script
+Wordpress plugin for integrated Priceza Sales Conversion Tracking with WooCommerce.
 
-V00001
+It so Easy!!
+
+You just insert merchantId it done.
+
+## Change Log
+
+### 1.0.0
+* 
+
