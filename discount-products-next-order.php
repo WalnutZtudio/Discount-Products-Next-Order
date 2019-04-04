@@ -15,7 +15,7 @@
  * @wordpress-plugin
  * Plugin Name:       Discount Products Next Order
  * Plugin URI:        https://walnutztudio.com
- * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
+ * Description:       Woocommerce plugin for auto generated coupons and send email to complete order for discount next order.
  * Version:           1.0.0
  * Author:            WalnutZtudio
  * Author URI:        https://walnutztudio.com

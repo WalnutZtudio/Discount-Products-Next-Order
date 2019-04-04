@@ -99,7 +99,9 @@ class Discount_Products_Next_Order_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/discount-products-next-order-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+
 	add_action('woocommerce_email_before_order_table', 'bdev_add_coupon_code_to_order_email', 20, 4);
+	
 	function bdev_add_coupon_code_to_order_email($order, $sent_to_admin, $plain_text, $email) {
 		$product_ids = '';
 		foreach ($order->get_items() as $item) {
