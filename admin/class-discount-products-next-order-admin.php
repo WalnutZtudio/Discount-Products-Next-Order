@@ -99,15 +99,21 @@ class Discount_Products_Next_Order_Admin {
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/discount-products-next-order-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
+}
 
-	add_action('woocommerce_email_before_order_table', 'bdev_add_coupon_code_to_order_email', 20, 4);
+/**
+* Check if WooCommerce is active
+**/
+if ( in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+
+	add_action('woocommerce_email_before_order_table', 'wz_add_coupon_for_next_order', 20, 4);
 	
-	function bdev_add_coupon_code_to_order_email($order, $sent_to_admin, $plain_text, $email) {
+	function wz_add_coupon_for_next_order($order, $sent_to_admin, $plain_text, $email) {
 		$product_ids = '';
 		foreach ($order->get_items() as $item) {
 			$product_ids .= $item->get_product_id() . ',';
 		}
-		if (($email->id == 'customer_completed_order') && (strpos($product_ids, '2671') !== false)) {
+		if (($email->id == 'customer_completed_order') && (strpos($product_ids, '72') !== false)) {
 			$coupon_code = wp_rand();
 			$amount = '100';
 			$discount_type = 'fixed_cart'; // Type: fixed_cart, percent, fixed_product, percent_product
@@ -130,12 +136,15 @@ class Discount_Products_Next_Order_Admin {
 			update_post_meta($new_coupon_id, 'apply_before_tax', 'yes');
 			update_post_meta($new_coupon_id, 'free_shipping', 'no');
 			unset($product_ids);
-			echo '<h2 class="discount-coupon-title">THIS IS YOUR NEXT DISCOUNT</h2><p class="discount-coupon-text">When you\'re ready, welcome back to a 100฿ discount!<br/> This is your discount code: <code><strong>' . $coupon_code . '</strong></code></p>';
+			echo '<br><hr><br><h2 class="discount-coupon-title">GET YOUR DISCOUNT FOR THE NEXT ORDER!</h2>
+			<p class="discount-coupon-text">When you\'re ready, welcome back to a 100 ฿ discount!</p>
+			<h2 class="discount-coupon-code"><strong>' . $coupon_code . '</h2><hr><br>';
 		}
 	?>
 	<style>
-		.discount-coupon-title { color: red; }
-		.discount-coupon-text { color: black; }
+		.discount-coupon-title { color: red; text-align: center;}
+		.discount-coupon-text { color: black; text-align: center;}
+		.discount-coupon-code {color:#676767; text-align: center;}
 	</style>
 	<?php
 	}
